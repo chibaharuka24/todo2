@@ -14,9 +14,6 @@
         <div class="create-form-item">
             <input class="create-form-item-input type="text" name="content" value="">
             <select class="create-form-item-select" name="">
-            @foreach
-            <option class="">
-            @endforeach
             </select>
             <div class="create-form_button">
                 <button class="create-form_button-submit" type="submit">作成</button>
@@ -34,6 +31,23 @@
         @endforeach
         </select>
     </form>
+    <div class="todo-table">
+        <table class="todo-table_inner">
+            <tr class="todo-table__row">
+                <th class="todo-table__header">
+                    <span class="todo-table__header-span">Todo</span>
+                    <span class="todo-table__header-span">カテゴリ</span>
+                </th>
+            </tr>
+            @foreach($todos as $todo)
+            <tr class="todo-table__row">
+                <form class="update-form" action="/todos/update" method="post">
+                @method('PATCH')
+                @csrf
+
+
+            </tr>
+
 
 </div>
 
