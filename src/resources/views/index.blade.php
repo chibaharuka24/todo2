@@ -41,18 +41,41 @@
             </tr>
             @foreach($todos as $todo)
             <tr class="todo-table__row">
-                <form class="update-form" action="/todos/update" method="post">
-                @method('PATCH')
-                @csrf
-
-
+                <td class="todo-table__item">
+                    <form class="update-form" action="/todos/update?id={{$todo->id}}" method="post">
+                    @method('PATCH')
+                    @csrf
+                        <div class="update-form__item">
+                            <input class="update-form__item-input"  name="content" value="{{ $todo['content'] }}">
+                        </div>
+                        <div class="update-form__item">
+                            <select class="update-form__item-select" name="category_id">
+                            @foreach($categories as $category)
+                            <?php
+                            $isSelected= '';
+                            if(($todo->category_id ?? '') == $category['id']) {
+                                $isSelected = ' selected';
+                            }
+                            ?>
+                                <option value="{{ $category['id'] }}"{{ $isSelected}}>{{ $category['name']}}</option>
+                            </select>
+                        </div>
+                        <div class="update-form__button">
+                            <button class="update-form__button-submit" type="submit">更新</button>
+                        </div>
+                    </form>
+                </td>
+                <td class="todo-table__item">
+                    <form class="delete-form" action="/todos/delete?id={{ $todo->id }}" method="post">
+                        @method('DELETE')
+                        @csrf
+                        <div class="delete-form__button">
+                            <button class="delete-form__button-submit">削除</button>
+                        </div>
+                    </form>
+                </td>
             </tr>
-
-
+        </table>
+    </div>
 </div>
-
-
-
-
-
 @endsection
