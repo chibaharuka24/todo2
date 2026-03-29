@@ -13,14 +13,19 @@ class CategoryController extends Controller
     }
 
     public function store () {
+        $category = $request->only(['name']);
+        Category::create($category);
         redirect ('/categories');
     }
 
     public function update (Request $request) {
-
+        $category = request->only(['name']);
+        Category::find($request->id)->update($category);
     }
 
-    public function delete (Request $request) {
+    public function destroy (Request $request) {
+        $category = request->only(['name']);
+        Category::find($request->id)->delete($category);
 
     }
 }

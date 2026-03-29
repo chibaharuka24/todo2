@@ -27,7 +27,7 @@ class TodoController extends Controller
 
     public function destroy (Request $request) {
         $todo = Todo::find($request->id);
-        Todo::find($request->id)->delete();
+        $todo->delete();
     }
 
     public function search () {
