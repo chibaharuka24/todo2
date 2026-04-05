@@ -13,7 +13,7 @@
             <a class="header__logo">
                 Todo
             </a>
-            <a class="nav" href="/todo/categories">
+            <a class="nav" href="/categories">
                 カテゴリ一覧
             </a>
         </div>
