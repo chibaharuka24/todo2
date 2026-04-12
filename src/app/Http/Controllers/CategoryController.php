@@ -3,22 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Models\Category;
+use App\Models\Category;
 use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller
 {
     public function index () {
-        return view ('category');
+        $categories = Category::all();
+        return view ('category' ,compact('categories'));
     }
 
-    public function store () {
-        $category = $request->only(['name']);
+    public function store (Request $request) {
+        $category = $request->only('name');
         Category::create($category);
-        redirect ('/categories');
+        return redirect ('/categories');
     }
 
-    public function update (Request $request) {
+    public function update (CategoryRequest $request) {
         $category = request->only(['name']);
         Category::find($request->id)->update($category);
     }

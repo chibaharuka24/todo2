@@ -2,7 +2,6 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/category.css') }}" >
-
 @endsection
 
 @section('content')
@@ -26,8 +25,8 @@
 <div class="category-content">
     <form class="create-form" action="/categories" method="post">
         @csrf
-        <div class="">
-            <input class="" type="text" name="name" value="">
+        <div class="category-create">
+            <input class="category-create__item-input" type="text" name="name" value="">
         </div>
         <div class="create-form__button">
             <button class="create-form__button-submit" type="submit">作成</button>
@@ -38,8 +37,34 @@
             <tr class="category-table__row">
                 <th class="category-table__header">
                     <span class="category-table__header-span">category</span>
-</th>
-</tr>
-
+                </th>
+            </tr>
+            @foreach($categories as $category)
+            <tr class="category-table__row">
+                <td class="category-table__item">
+                    <form class="update-form" action="/categories/update?=id{{ $category->id }}" method="post">
+                        @method('PATCH')
+                        @csrf
+                        <div class="update-form__item">
+                            <input class="update-form__item-input" name="name" value="{{ $category['name'] }}">
+                        </div>
+                        <div class="update-form__button">
+                            <button class="update-form__button-submit" type="submit">更新</button>
+                        </div>
+                    </form>
+                </td>
+                <td class="category-table__item">
+                    <form class="delete-form" action="/categories/delete?id={{$category->id }}" method="post">                      @method('DELETE')
+                        @csrf
+                        <div class="delete-form__button">
+                            <input type="hidden" name="id" value="{{ $category['id'] }}">
+                            <button class="delete-form__button-submit">削除</button>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </table>
+    </div>
 </div>
 @endsection

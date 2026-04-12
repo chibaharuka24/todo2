@@ -15,8 +15,8 @@ class TodoController extends Controller
         return view ('index' ,compact ('todos' , 'categories'));
     }
 
-    public function store (Request $request) {
-        $todo = $request->only('content');
+    public function store (TodoRequest $request) {
+        $todo = $request->only(['content','category_id']);
         Todo::create($todo);
         return redirect ('/');
     }
