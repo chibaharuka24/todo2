@@ -33,9 +33,9 @@
         </div>
     </form>
     <div class="category-table">
-        <table class="category-table_inner">
+        <table class="category-table__inner">
             <tr class="category-table__row">
-                <th class="category-table__header">
+                <th class="category-table__header" colspan="2">
                     <span class="category-table__header-span">category</span>
                 </th>
             </tr>
@@ -46,15 +46,16 @@
                         @method('PATCH')
                         @csrf
                         <div class="update-form__item">
-                            <input class="update-form__item-input" name="name" value="{{ $category['name'] }}">
+                            <input class="update-form__item-input" type="" name="name" value="{{ $category['name'] }}">
                         </div>
                         <div class="update-form__button">
+                            <input type="hidden" name="id" value="{{ $category['id'] }}">
                             <button class="update-form__button-submit" type="submit">更新</button>
                         </div>
                     </form>
                 </td>
                 <td class="category-table__item">
-                    <form class="delete-form" action="/categories/delete?id={{$category->id }}" method="post">                      @method('DELETE')
+                    <form class="delete-form" action="/categories/delete?id={{ $category->id }}" method="post">                      @method('DELETE')
                         @csrf
                         <div class="delete-form__button">
                             <input type="hidden" name="id" value="{{ $category['id'] }}">

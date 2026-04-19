@@ -38,6 +38,7 @@
                 </select>
             </div>
             <div class="create-form_button">
+                <input type="hidden" name="category_id" value="{{ $category['id'] }}">
                 <button class="create-form_button-submit" type="submit">作成</button>
             </div>
         </form>
@@ -61,7 +62,7 @@
     <div class="todo-table">
         <table class="todo-table_inner">
             <tr class="todo-table__row">
-                <th class="todo-table__header">
+                <th class="todo-table__header" colspan="2">
                     <span class="todo-table__header-span">Todo</span>
                     <span class="todo-table__header-span">カテゴリ</span>
                 </th>

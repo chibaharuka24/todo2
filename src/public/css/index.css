@@ -1,5 +1,5 @@
 .create-form-title,.search-form-title {
-    font-size: 24px;
+    font-size: 18px;
 }
 
 .todo-content {
@@ -32,6 +32,7 @@
     appearance: none;
     padding: 10px;
 }
+
 .create-form_button ,.search-form__button{
     border: none;
     border-radius: 3px;
@@ -41,6 +42,69 @@
     width: 150px;
     height: 40px;
     background-color: black;
+    color: white;
+    border: none;
+    border-radius: 3px;
+}
+
+.todo-table__inner {
+    width: 100%;
+}
+
+.todo-table__header {
+    text-align: left;
+    border-bottom: 1px solid rgb(194, 191, 191);
+}
+
+.todo-table {
+    width: 100%;
+    margin-top: 50px;
+}
+
+.todo-table__row {
+    padding: 5px 5px 5px 20px;
+}
+
+.todo-table__row:last-child {
+    padding-right: 20px;
+}
+
+.todo-table__row:first-child {
+    padding-left: 20px;
+}
+
+.todo-table__item {
+    border-bottom: 1px solid rgb(194, 191, 191);
+    padding: 5px;
+    border-spacing: 0;
+}
+
+.update-form {
+    display: flex;
+}
+
+.update-form__item-input {
+    border: none;
+}
+
+.update-form__item-select {
+    appearance: none;
+    border: none;
+}
+
+.update-form__button-submit {
+    width: 50px;
+    height: 30px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 3px;
+}
+
+.delete-form__button-submit {
+    width: 50px;
+    height: 30px;
+    background-color: red;
     color: white;
     border: none;
     border-radius: 3px;

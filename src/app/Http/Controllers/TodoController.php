@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Todo;
 use App\Models\Category;
 use App\Http\Requests\TodoRequest;
+use App\Http\Requests\CategoryRequest;
 
 class TodoController extends Controller
 {
@@ -15,7 +16,7 @@ class TodoController extends Controller
         return view ('index' ,compact ('todos' , 'categories'));
     }
 
-    public function store (TodoRequest $request) {
+    public function store (Request $request) {
         $todo = $request->only(['content','category_id']);
         Todo::create($todo);
         return redirect ('/');
@@ -32,7 +33,8 @@ class TodoController extends Controller
         $todo->delete();
     }
 
-    public function search () {
-
+    public function search (Request $request) {
+        $todo = Todo::find($request->id);
+        return redirect('/');
     }
 }
