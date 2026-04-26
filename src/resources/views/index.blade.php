@@ -32,16 +32,17 @@
             <div class="create-form__item">
                 <input class="create-form__item-input" type="text" name="content" value="{{ old('content') }}">
                 <select class="create-form__item-select" name="category_id">
+                    <option value="">カテゴリ</option>
                     @foreach ($categories as $category)
-                        <option class="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                    <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="create-form_button">
-                <input type="hidden" name="category_id" value="{{ $category['id'] }}">
                 <button class="create-form_button-submit" type="submit">作成</button>
             </div>
         </form>
+        
         <div class="search-form-title">
             <h1>Todo検索</h1>
         </div>
@@ -49,6 +50,7 @@
             <div class="search-form__item">
                 <input class="search-form__item-input" type="text" name="keyword" value="{{ $keyword ?? '' }}">
                 <select class="create-form__item-select" name="category_id">
+                    <option value="">カテゴリ</option>
                     @foreach ($categories as $category)
                         <option class="{{ $category['id'] }}">{{ $category['name'] }}</option>
                     @endforeach
@@ -80,12 +82,12 @@
                             <select class="update-form__item-select" name="category_id">
                             @foreach($categories as $category)
                             <?php
-                            $isSelected= '';
+                            $isSelected = '';
                             if(($todo->category_id ?? '') == $category['id']) {
                                 $isSelected = ' selected';
                             }
                             ?>
-                                <option value="{{ $category['id'] }}"{{ $isSelected}}>{{ $category['name']}}</option>
+                                <option value="{{ $category['id'] }}"{{$isSelected}}>{{ $category['name']}}</option>
                             @endforeach
                             </select>
                         </div>
